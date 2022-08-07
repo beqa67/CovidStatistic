@@ -1,9 +1,9 @@
 <template>
   <div class='language'>
-    <nuxt-link v-if="$i18n.locale !== 'en'" :to="switchLocalePath('en')" >
+    <nuxt-link @click.native="resetFilters()" v-if="$i18n.locale !== 'en'" :to="switchLocalePath('en')" >
       English
     </nuxt-link>
-    <nuxt-link v-if="$i18n.locale !== 'ka'" :to="switchLocalePath('ka')">
+    <nuxt-link @click.native="resetFilters()" v-if="$i18n.locale !== 'ka'" :to="switchLocalePath('ka')">
       ქართული
     </nuxt-link>
   </div>
@@ -11,7 +11,13 @@
 
 <script>
 export default {
-  name: 'LanguageButton'
+  name: 'LanguageButton',
+  methods: {
+    resetFilters() {
+      this.$store.commit('filterData/resetSorting')
+      this.$store.commit('filterData/resetSearchFieldValue')
+    }
+  }
 }
 </script>
 

@@ -36,13 +36,15 @@ export default {
   }),
  },
  async mounted() {
+   console.log("მmounted", this.getLoaded)
+   // console.log("countries", this.countries)
+   // console.log("countriesFullDetails", this.countriesFullDetails)
    if (!this.getLoaded) {
      this.$store.commit('countriesData/setLoaded', false)
      await this.getCountriesFullData()
      this.$store.commit('summary/setSummaryData', this.dataSummary)
      this.$store.commit('countriesData/setLoaded', true)
    }
-
  },
  methods: {
    async getCountriesFullData() {

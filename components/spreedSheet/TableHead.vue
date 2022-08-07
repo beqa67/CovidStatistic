@@ -46,6 +46,7 @@ export default {
   },
   methods: {
     setSorting(sortItemName) {
+      this.resetSearch()
       const { name,  descending} = this.getSortFields
       const sortFields = {}
 
@@ -58,6 +59,9 @@ export default {
       }
 
       this.$store.commit('filterData/setSortFields', sortFields)
+    },
+    resetSearch() {
+      this.$store.commit('filterData/resetSearchFieldValue')
     }
   }
 }

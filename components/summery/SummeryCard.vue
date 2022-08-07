@@ -1,6 +1,20 @@
 <template>
 <div class='card'>
-  <pre>{{getSummaryData}}</pre>
+  <h2>{{ $t('summeryTitle') }}</h2>
+  <ul>
+    <li>
+      {{ $t('death') }}
+      {{ getSummaryData.deaths }}
+    </li>
+    <li>
+      {{ $t('confirmed') }}
+      {{ getSummaryData.confirmed }}
+    </li>
+    <li>
+      {{ $t('recovered') }}
+      {{ getSummaryData.recovered }}
+    </li>
+  </ul>
 </div>
 </template>
 
@@ -17,6 +31,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang='scss' scoped>
+.card {
+  margin: 50px;
+  padding: 10px;
+}
 </style>

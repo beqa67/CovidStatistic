@@ -14,10 +14,6 @@ export default {
       type: String,
       default: '',
       required: true
-    },
-    active: {
-      type: Boolean,
-      default: false
     }
   },
   computed: {
@@ -25,7 +21,12 @@ export default {
       getSortFields: 'filterData/getSortFields',
     }),
     isAscending() {
-      return !this.getSortFields.descending && this.name === this.getSortFields.name
+      return !this.getSortFields.descending && this.active
+    },
+    active() {
+      console.log("this.name", this.name)
+      console.log("this.getSortFields.name", this.getSortFields.name)
+      return this.name === this.getSortFields.name
     }
   },
 }
@@ -36,6 +37,7 @@ export default {
   width: 15px;
   opacity: 0.5;
   cursor: pointer;
+  margin: 0 10px;
 
   &--active {
     opacity: 1;

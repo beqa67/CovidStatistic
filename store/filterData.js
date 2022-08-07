@@ -1,11 +1,12 @@
 import { getField, updateField } from 'vuex-map-fields'
+const sortFieldState = {
+  name: '', // deaths / confirmed / recovered
+  descending: false
+}
 
 export const state = () => ({
   searchFieldValue: '',
-  sortFields: {
-    name: '', // deaths / confirmed / recovered
-    descending: false
-  }
+  sortFields: {...sortFieldState}
 })
 
 export const mutations = {
@@ -15,6 +16,12 @@ export const mutations = {
   },
   setSortFields: (state, payload) => {
     state.sortFields = payload
+  },
+  resetSorting: (state) => {
+    state.sortFields = {...sortFieldState}
+  },
+  resetSearchFieldValue: (state) => {
+    state.searchFieldValue = ''
   },
 }
 

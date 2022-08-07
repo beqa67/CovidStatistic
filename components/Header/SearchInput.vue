@@ -1,7 +1,7 @@
 <template>
 <div class='search'>
   <label class='search__label'>მოძებნე ქვეყანა</label>
-  <input v-model="searchFieldValue" type='text' >
+  <input v-model="searchFieldValue" @input="resetSorting()" type='text' >
 </div>
 </template>
 
@@ -9,9 +9,14 @@
 import { mapFields } from 'vuex-map-fields'
 export default {
   name: 'SearchInput',
- computed: {
-   ...mapFields('filterData', ['searchFieldValue']),
- }
+   computed: {
+     ...mapFields('filterData', ['searchFieldValue']),
+   },
+  methods: {
+    resetSorting() {
+      this.$store.commit('filterData/resetSorting')
+    }
+  }
 }
 </script>
 

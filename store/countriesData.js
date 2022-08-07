@@ -17,7 +17,8 @@ export const mutations = {
 }
 
 export const actions = {
-  async fetchCountries({commit }) {
+  async fetchCountries({commit, state }) {
+    if (state.countries?.length) return
     const { data } = await this.$axios.get('/api/countries')
     commit('setCountries', data)
     commit('setCountriesFullData', data)
